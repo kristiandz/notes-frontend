@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Note } from './note.model';
 
 @Component({
   selector: 'app-note',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './note.component.scss'
 })
 export class NoteComponent {
-
+  note = input.required<Note>();
 }

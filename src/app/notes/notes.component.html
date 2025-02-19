@@ -1,1 +1,7 @@
-<p>notes works!</p>
+<app-header />
+
+<div class="main">
+  @for (note of notes(); track $index) {
+  <app-note [note]="note"></app-note>
+  }
+</div>

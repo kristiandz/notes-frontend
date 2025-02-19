@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="container">
+  <h1>ANGULAR NOTES APPLICATION</h1>
+  <div class="content">
+    <h3>Please authenticate to continue</h3>
+    <div class ="inputs">
+      <input [(ngModel)]="username" type="text" placeholder="Username" />
+      <input [(ngModel)]="password" type="text" placeholder="Password" />
+    </div>
+    <div class = "buttons">
+        <button (click)="login()" >Login</button>
+        <button (click)="register()">Register</button>
+    </div>
+    <h4>Error Placeholder</h4>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+header {
+    width: 100%;
+    height: 4.3rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border-bottom: 1px solid rgb(121, 121, 121);
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.title {
+    display: flex;
+    padding-left: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    align-items: center;
+}
+
+p {
+    padding-left: 1rem;
+    padding-right: 3rem;
+    font-size: 1.3rem;
+}
+
+.action {
+    font-size: 1.2rem;
+}
+
+input{
+    border-radius: 7px;
+    border-color: rgb(206, 206, 206);
+    background-color: lightgrey;
+    height: 2rem;
+    width: 17rem;
+    border-style: solid;
+}
