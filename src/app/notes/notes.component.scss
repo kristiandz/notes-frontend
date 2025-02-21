@@ -2,6 +2,15 @@
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 2rem;
+    padding-top: 4rem;
+}
+
+.selected{
+    padding-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
 }
 
 app-note {

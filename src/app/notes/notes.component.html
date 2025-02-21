@@ -1,7 +1,19 @@
 <app-header />
-
-<div class="main">
-  @for (note of notes(); track $index) {
-  <app-note [note]="note"></app-note>
-  }
-</div>
+@if(selectedNote)
+{
+  <div class="selected">
+      <app-note-view clickOutside (clickOutside)="closeSelectedNote()" [note]="selectedNote"></app-note-view>
+  </div>
+} 
+@else
+{
+  <div class="main">
+  @for (note of notes(); track $index) 
+  { 
+    @if($index < 9)
+    {
+      <app-note (click)="selectNote($index)" [note]="note"></app-note>
+    } 
+  } 
+  </div>
+}
