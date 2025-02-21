@@ -1,8 +1,9 @@
 div {
     border-radius: 10px;
     background-color: rgb(150, 150, 150);
-    width: fit-content;
     transition: 0.5s;
+    min-width: 280px;
+    min-height: 180px;
     padding: 5px;
     padding-left: 15px;
 }
@@ -10,6 +11,7 @@ div {
 div:hover {
     background-color: #3d2855;
     box-shadow: 1px;
+    cursor: pointer;
 }
 
 h4{

@@ -1,7 +1,7 @@
 <div>
   <h4>{{note().title}}</h4>
   <span>
-    {{note().content}}
+    {{note().content | slice: 0:40 }}...
   </span>
   <section>
     <p>Category: {{note().categoryId}}</p>

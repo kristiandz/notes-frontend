@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
+import { SlicePipe } from '@angular/common';
 import { Note } from './note.model';
 
 @Component({
   selector: 'app-note',
-  imports: [],
+  imports: [SlicePipe],
   templateUrl: './note.component.html',
   styleUrl: './note.component.scss'
 })
