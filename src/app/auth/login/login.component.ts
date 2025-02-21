@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,6 @@ export class LoginComponent {
   username = signal('');
   password = signal('');
   private router = inject(Router);
-  private activatedRouter = inject(ActivatedRoute);
   private authService = inject(AuthService);
 
   login() {
@@ -22,6 +21,7 @@ export class LoginComponent {
       .subscribe((response) => {
         this.authService.setToken(response);
         this.router.navigate(['/notes']);
+        this.authService.setAuthorized();
       });
   }
 
