@@ -3,5 +3,12 @@ export interface Note{
     content: string,
     userId: number,
     categoryId: [number],
-    attachments: {}
+    attachments: [Attachment]
+}
+
+export interface Attachment{
+    "id": number,
+    "fileName": string,
+    "fileType": string,
+    "downloadUrl": string
 }
