@@ -45,7 +45,6 @@ export class AuthService {
   }
 
   getUsername() {
-    console.log("getter: " + this.username)
     return this.username;
   }
 }

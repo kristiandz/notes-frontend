@@ -9,5 +9,4 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'notes-frontend';
 }
