@@ -7,8 +7,8 @@
         <h1>Untitled note</h1>
     }
     <div>
-      <span>Edit</span>
-      <span>Delete</span>
+      <span class="edit">Edit</span>
+      <span class="delete" (click)="deleteNote(note().id)">Delete</span>
     </div>
   </div>
   <div class="content">

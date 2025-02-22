@@ -30,6 +30,16 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
+.delete, .edit{
+    cursor:pointer;
+    transition-duration: 0.3s;
+}
+
+.delete:hover,.edit:hover{
+    color:purple;
+}
+
 .title span{
     padding: 1rem;
     padding-top: 1rem;
