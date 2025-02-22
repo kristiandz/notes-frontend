@@ -25,7 +25,6 @@ export class NotesComponent {
 
   selectNote(id: number) {
     this.selectedNote = this.notes()[id];
-    this.router.navigate(['/notes/' + id]);
   }
 
   closeSelectedNote() {
