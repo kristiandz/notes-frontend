@@ -1,0 +1,50 @@
+<div class="main">
+  <div class="title">
+    @if(note().title){
+        <h1>{{ note().title }}</h1>
+    }
+    @else(){
+        <h1>Untitled note</h1>
+    }
+    <div>
+      <span>Edit</span>
+      <span>Delete</span>
+    </div>
+  </div>
+  <div class="content">
+    @if (note().content) {
+        <p>{{ note().content }}</p>
+    }
+    @else {
+        <p>No content added yet, click to add content..</p>
+    }
+  </div>
+  <div class="info">
+    <h4>Date Created: {{ note().createdAt | date }}</h4>
+    <div class="categories">
+        @if(note().categories.length == 1 ){
+            <h4>Note category: </h4> <span>{{ note().categories[0].name }}</span>
+        }
+        @else if(note().categories.length > 1 ){
+            <h4>Categories: </h4>
+            @for(category of note().categories; track $index){
+                <span>{{category.name}}</span>
+            }
+        }
+        @else {
+            <h4>No categories</h4>
+        }
+    </div>
+    <div class="attachments">
+    @if(note().attachments.length > 0){
+        <h4>Attachments: </h4>
+        @for(attachment of note().attachments; track $index){
+            <span>{{ note().attachments[$index].fileName }} </span>
+        }
+    }
+    @else(){
+        <h4>No attachments added yet</h4>
+    }
+    </div>
+  </div>
+</div>
