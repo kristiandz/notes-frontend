@@ -8,6 +8,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'notes', component: NotesComponent },
     { path: 'notes/:id', component: NotesComponent },
+    { path: 'notes/category/:id', component: NotesComponent }
   ];
 
   export const appRouter = provideRouter(routes);
