@@ -1,9 +1,11 @@
 export interface Note{
+    id: number
     title: string,
     content: string,
+    createdAt: string,
     userId: number,
-    categoryId: [number],
-    attachments: [Attachment]
+    categories: Category[],
+    attachments: Attachment[]
 }
 
 export interface Attachment{
@@ -11,4 +13,9 @@ export interface Attachment{
     "fileName": string,
     "fileType": string,
     "downloadUrl": string
+}
+
+export interface Category{
+    "id": number,
+    "name": string
 }
