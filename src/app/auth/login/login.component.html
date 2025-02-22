@@ -3,8 +3,8 @@
   <div class="content">
     <h3>Please authenticate to continue</h3>
     <div class ="inputs">
-      <input [(ngModel)]="username" type="text" placeholder="Username" />
-      <input [(ngModel)]="password" type="text" placeholder="Password" />
+      <input (keydown.enter)="login()" [(ngModel)]="username" type="text" placeholder="Username" />
+      <input (keydown.enter)="login()" [(ngModel)]="password" type="text" placeholder="Password" />
     </div>
     <div class = "buttons">
         <button (click)="login()" >Login</button>
