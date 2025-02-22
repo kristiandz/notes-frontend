@@ -17,6 +17,11 @@ app-note {
     padding: 10px;
 }
 
+.empty-state{
+    padding-left: 10rem;
+    padding-top: 10rem;
+}
+
 @media only screen and (max-width: 880px) {
     .main {
         display: grid;

@@ -4,30 +4,35 @@ import { HeaderComponent } from '../header/header.component';
 import { Component, inject, Signal } from '@angular/core';
 import { NoteComponent } from './note/note.component';
 import { NotesService } from './notes.service';
+import { CommonModule } from '@angular/common';
 import { Note } from './note/note.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notes',
-  imports: [NoteComponent, HeaderComponent, NoteViewComponent, ClickOutsideDirective],
+  imports: [CommonModule,NoteComponent, HeaderComponent, NoteViewComponent, ClickOutsideDirective],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss',
 })
 export class NotesComponent {
   private notesService = inject(NotesService);
-  private router = inject(Router);
-  notes: Signal<any[]> = this.notesService.notes;
-  selectedNote: Note | undefined = undefined;
+  private route = inject(ActivatedRoute);
+  notes: Signal<Note[]> = this.notesService.filteredNotes;
+  selectedNote = this.notesService.selectedNote;
 
   ngOnInit() {
     this.notesService.fetchNotes();
+    this.route.params.subscribe((params) => {
+      const categoryId = params['id'] ? +params['id'] : null;
+      this.notesService.setCategory(categoryId);
+    });
   }
 
   selectNote(id: number) {
-    this.selectedNote = this.notes()[id];
+    this.notesService.selectedNote.set((this.notes()[id]));
   }
 
   closeSelectedNote() {
-    this.selectedNote = undefined;
+    this.notesService.selectedNote.set((undefined));
   }
 }

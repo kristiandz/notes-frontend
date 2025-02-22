@@ -1,19 +1,25 @@
 <app-header />
-@if(selectedNote)
+@if(selectedNote())
 {
-  <div class="selected">
-      <app-note-view clickOutside (clickOutside)="closeSelectedNote()" [note]="selectedNote"></app-note-view>
+  <div class="selected" *ngIf="selectedNote() as note">
+      <app-note-view clickOutside (clickOutside)="closeSelectedNote()" [note]="note"></app-note-view>
   </div>
 } 
 @else
 {
-  <div class="main">
-  @for (note of notes(); track $index) 
-  { 
-    @if($index < 9)
-    {
-      <app-note (click)="selectNote($index)" [note]="note"></app-note>
-    } 
+  @if (notes().length === 0) {
+    <div class="empty-state">
+      <h3>No notes available for this category.</h3>
+      <p>Try selecting another category or create a new note!</p>
+    </div>
   } 
-  </div>
+  @else {
+    <div class="main">
+      @for (note of notes(); track $index) { 
+        @if($index < 9) {
+          <app-note (click)="selectNote($index)" [note]="note"></app-note>
+        } 
+      } 
+    </div>
+  }
 }
