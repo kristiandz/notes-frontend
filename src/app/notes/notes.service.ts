@@ -12,6 +12,7 @@ export class NotesService {
   categories = signal<Category[]>([]);
   selectedNote = signal<Note | undefined>(undefined);
   selectedCategory = signal<number | undefined>(undefined);
+  headerTitle = signal<string>(''); 
   filteredNotes = signal<Note[]>([]);
 
   fetchNotes() {
@@ -47,6 +48,7 @@ export class NotesService {
 
   setCategory(categoryId: number | undefined) {
     this.selectedCategory.set(categoryId);
+    this.updateHeaderTitle(categoryId)
     this.updateFilteredNotes();
   }
 
@@ -81,5 +83,12 @@ export class NotesService {
     );
   }
 
-
+  updateHeaderTitle(categoryId: number | undefined) {
+    const category = this.categories().find((category) => category.id === categoryId);
+    if (category) {
+      this.headerTitle.set(category.name);
+    } else {
+      this.headerTitle.set('All notes');
+    }
+  }
 }
