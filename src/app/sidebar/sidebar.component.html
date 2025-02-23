@@ -1,22 +1,25 @@
 <div class="main">
   <div class="content">
-    @if(isAuthorized){
-    <p>WELCOME ANTE01</p>
+    @if(isAuthorized()){
+    <p>Welcome {{username}}</p>
     <div class="categories">
-      <h4>CATEGORIES</h4>
-      <p>Work</p>
-      <p>Home</p>
-      <p>Other</p>
-      <p>Private</p>
+      <h4>RECENT CATEGORIES</h4>
+      @for(category of categories(); track $index){
+        @if($index < 9){
+          <p (click)="changeCategory(category.id)">{{category.name}}</p>
+        }
+        @else if (categories().length == 0) {
+          <p>No categories</p>
+        }
+      }
       <p></p>
-      <p></p>
-      <h4>ACTIONS</h4>
-      <p>Add new category</p>
-      <p>Add new note</p>
+      <h4>QUICK ACTIONS</h4>
+      <p (click)="clearCategoryFilter()">Show all notes</p>
+      <p (click)="addNewNote()">Add new note</p>
+      <p (click)="manageCategories()">Manage categories</p>
     </div>
     }
   </div>
-
   <div class="info">
     <img src="favicon.ico" alt="logo" />
     <p>NOTES</p>
