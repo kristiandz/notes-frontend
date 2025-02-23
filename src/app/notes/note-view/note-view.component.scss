@@ -3,7 +3,7 @@
 }
 
 .main{
-    padding: 2rem;
+    padding: 1.6rem;
     background-color: lightgrey;
     border-radius: 10px;
     height: 40rem;
@@ -18,8 +18,8 @@
     max-height: 50%;
     overflow-y: auto; 
     padding-right: 10px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     word-break: break-word;
 }
 
@@ -61,24 +61,19 @@
     border-radius: 10px;
     margin-left: 10px;
     height: 2.2rem;
-    padding: 7px;
-    padding-left: 1rem;
+    padding: 10px;
+    padding-left: 5px;
     padding-right: 1rem;
-    border: 1px solid rgb(182, 182, 182);
     transition-duration: 0.3s;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.info span:hover{
-    background-color: rgb(126, 45, 151);
-    cursor: pointer;
-    color:white;
 }
 
 .categories{
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(184, 184, 184);
 }
 
 .categories input[type=text]{
@@ -105,6 +100,7 @@
 .attachments{
     display:flex;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .attachments input[type=file]::file-selector-button{
