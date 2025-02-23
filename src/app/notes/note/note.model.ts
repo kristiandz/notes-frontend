@@ -16,6 +16,6 @@ export interface Attachment{
 }
 
 export interface Category{
-    "id": number,
+    "id"?: number,
     "name": string
 }
