@@ -11,6 +11,7 @@
     color: rgb(43, 43, 43);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .content{
@@ -19,6 +20,7 @@
     padding-right: 10px;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    word-break: break-word;
 }
 
 .title{
@@ -30,13 +32,18 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
-.delete, .edit{
+.delete,
+.edit,
+.save,
+.cancel{
     cursor:pointer;
     transition-duration: 0.3s;
 }
 
-.delete:hover,.edit:hover{
+.delete:hover,
+.edit:hover,
+.save:hover,
+.cancel:hover{
     color:purple;
 }
 
@@ -71,6 +78,20 @@
 .categories{
     display: flex;
     align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.categories input[type=text]{
+    margin-left: 3rem;
+    background-color: lightgrey;
+    border: 1px solid rgb(184, 184, 184);
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.categories input:focus{
+    border: 1px solid rgb(184, 184, 184);
+    outline: none;
 }
 
 .categories span{
@@ -84,10 +105,47 @@
 .attachments{
     display:flex;
     align-items: center;
-    // color: rgb(110, 110, 110);
 }
+
+.attachments input[type=file]::file-selector-button{
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 2rem;
+    background-color: rgb(207, 207, 207);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition-duration: 0.3s;
+}
+
+.attachments input[type=file]::file-selector-button:hover{
+    color: white;
+    background-color: purple;
+    cursor: pointer;
+}
+
 .attachments span{
     color: purple
+}
+
+.info button{
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    cursor: pointer;
+    transition-duration: 0.2s;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.info button:hover{
+    background-color: purple;
+    color: white;
+}
+
+.deleteButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1{
@@ -95,15 +153,43 @@ h1{
     margin: 0;
 }
 
-.content::-webkit-scrollbar {
+.content::-webkit-scrollbar,
+.editContent::-webkit-scrollbar {
     width: 8px;
-  }
+}
   
-  .content::-webkit-scrollbar-thumb {
+.content::-webkit-scrollbar-thumb,
+.editContent::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.178);
     border-radius: 10px;
-  }
+}
   
-  .content::-webkit-scrollbar-track {
+.content::-webkit-scrollbar-track,
+.editContent::-webkit-scrollbar-track {
     background: #c2c2c2;
-  }
+}
+
+.editTitle{
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(221, 221, 221);
+    color:purple;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2rem;
+    width: 40rem;
+}
+
+.editTitle:focus,.editContent:focus{
+    border: 0;
+    outline: none;
+}
+
+.editContent{
+    margin-top: .8rem;
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(221, 221, 221);
+    width:100%;
+    resize:none;
+    height: 16rem;
+}

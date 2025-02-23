@@ -1,50 +1,61 @@
 <div class="main">
-  <div class="title">
-    @if(note().title){
-        <h1>{{ note().title }}</h1>
-    }
-    @else(){
-        <h1>Untitled note</h1>
-    }
-    <div>
-      <span class="edit">Edit</span>
-      <span class="delete" (click)="deleteNote(note().id)">Delete</span>
+    <div class="title">
+      @if (!isEditing()) {
+        <h1>{{ note.title || 'Untitled note' }}</h1>
+        <div>
+          <span class="edit" (click)="enableEdit()">Edit</span>
+          <span class="delete" (click)="deleteNote(note.id)">Delete</span>
+        </div>
+      } @else {
+        <input class="editTitle" type="text" [formControl]="titleControl()" placeholder="Enter note title" />
+        <div>
+          <span class="save" (click)="saveEdit()">Save</span>
+          <span class="cancel" (click)="cancelEdit()">Cancel</span>
+        </div>
+      }
     </div>
-  </div>
-  <div class="content">
-    @if (note().content) {
-        <p>{{ note().content }}</p>
-    }
-    @else {
-        <p>No content added yet, click to add content..</p>
-    }
-  </div>
-  <div class="info">
-    <h4>Date Created: {{ note().createdAt | date }}</h4>
-    <div class="categories">
-        @if(note().categories.length == 1 ){
-            <h4>Note category: </h4> <span>{{ note().categories[0].name }}</span>
-        }
-        @else if(note().categories.length > 1 ){
-            <h4>Categories: </h4>
-            @for(category of note().categories; track $index){
-                <span>{{category.name}}</span>
+    <div class="content">
+      @if (!isEditing()) {
+        <p>{{ note.content || 'No content added yet, click to add content...' }}</p>
+      } @else {
+        <textarea class="editContent" [formControl]="contentControl()" placeholder="Edit note content"></textarea>
+      }
+    </div>
+    <div class="info">
+      <h4>Date Created: {{ note.createdAt | date }}</h4>
+      <div class="categories">
+        <h4>Categories:</h4>
+        @if (!isEditing()) {
+          @for (category of note.categories; track category.id) {
+            <span>{{ category.name }}</span>
+          }
+        } @else {
+            @for (i of categoryIndices; track i) {
+                <div class="deleteButton">
+                    <span>{{note.categories[i].name}}</span>
+                    <button (click)="removeCategory(i)">Remove</button>
+                </div>
             }
+          <input type="text" #newCategory placeholder="New category" />
+          <button (click)="addCategory(newCategory.value)">Add Category</button>
         }
-        @else {
-            <h4>No categories</h4>
+      </div>
+      <div class="attachments">
+        <h4>Attachments:</h4>
+        @if (!isEditing()) {
+          @for (attachment of note.attachments; track attachment.id) {
+            <span>{{ attachment.fileName }}</span>
+          }
+        } @else {
+            @for (control of attachmentsArray().controls; track $index) {
+                <div class="deleteButton">
+                  <span>{{ control.value }}</span>
+                  <button (click)="removeAttachment(attachmentsArray().controls.indexOf(control))">Remove</button>
+                </div>
+            }
+          <input type="file" (change)="onFileSelected($event)" multiple />
         }
-    </div>
-    <div class="attachments">
-    @if(note().attachments.length > 0){
-        <h4>Attachments: </h4>
-        @for(attachment of note().attachments; track $index){
-            <span>{{ note().attachments[$index].fileName }} </span>
-        }
-    }
-    @else(){
-        <h4>No attachments added yet</h4>
-    }
+      </div>
     </div>
   </div>
-</div>
+  

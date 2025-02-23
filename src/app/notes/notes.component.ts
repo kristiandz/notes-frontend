@@ -23,7 +23,7 @@ export class NotesComponent {
   ngOnInit() {
     this.notesService.fetchNotes();
     this.route.params.subscribe((params) => {
-      const categoryId = params['id'] ? +params['id'] : null;
+      const categoryId = params['id'] ? +params['id'] : undefined;
       this.notesService.setCategory(categoryId);
     });
   }
