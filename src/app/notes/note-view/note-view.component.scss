@@ -61,7 +61,7 @@
     border-radius: 10px;
     margin-left: 10px;
     height: 2.2rem;
-    padding: 10px;
+    padding: 8px;
     padding-left: 5px;
     padding-right: 1rem;
     transition-duration: 0.3s;
@@ -120,8 +120,15 @@
 }
 
 .attachments span{
-    color: purple
+    color: purple;
+    padding-right: 3px;
 }
+
+.attachments span:hover{
+    cursor: pointer;
+    border: 1px solid purple;
+}
+
 
 .info button{
     background-color: transparent;
@@ -167,8 +174,8 @@ h1{
 
 .editTitle{
     border: 0;
-    border-radius: 3px;
-    background-color: rgb(221, 221, 221);
+    border-radius: 6px;
+    background-color: rgb(215, 215, 215);
     color:purple;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2rem;
@@ -183,8 +190,8 @@ h1{
 .editContent{
     margin-top: .8rem;
     border: 0;
-    border-radius: 3px;
-    background-color: rgb(221, 221, 221);
+    border-radius: 6px;
+    background-color: rgb(215, 215, 215);
     width:100%;
     resize:none;
     height: 16rem;

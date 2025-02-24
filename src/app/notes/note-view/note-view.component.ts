@@ -5,6 +5,7 @@ import { Category, Note } from '../note/note.model';
 import { DatePipe } from '@angular/common';
 import { NotesService } from '../notes.service';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-note-view',
@@ -18,9 +19,11 @@ export class NoteViewComponent {
   private notesService = inject(NotesService);
   private formBuilder = inject(FormBuilder);
   private categoryService = inject(CategoryService);
+
   editForm = signal<FormGroup>(this.formBuilder.group({}));
   isEditing = signal<boolean>(false);
-
+  availableCategories = signal<Category[]>([]);
+  selectedCategoryId = signal<number | null>(null);
   titleControl = computed(() => this.editForm().get('title') as FormControl);
 
   contentControl = computed(
@@ -44,6 +47,7 @@ export class NoteViewComponent {
   }
 
   ngOnInit() {
+    this.fetchCategories();
     this.editForm.set(
       this.formBuilder.group({
         title: [this.note.title],
@@ -60,6 +64,12 @@ export class NoteViewComponent {
         ),
       })
     );
+  }
+
+  fetchCategories() {
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.availableCategories.set(categories);
+    });
   }
 
   enableEdit() {
@@ -82,6 +92,18 @@ export class NoteViewComponent {
         ),
       })
     );
+  }
+
+  addSelectedCategory() {
+    if (this.selectedCategoryId()) {
+      const selectedCategory = this.availableCategories().find(
+        (cat) => cat.id === this.selectedCategoryId()
+      );
+      if (selectedCategory && !this.note.categories.some(cat => cat.id === selectedCategory.id)) {
+        this.note.categories.push(selectedCategory);
+        this.categoriesArray.push(this.formBuilder.control(selectedCategory.name));
+      }
+    }
   }
 
   addCategory(categoryName: string) {
@@ -185,5 +207,18 @@ export class NoteViewComponent {
       this.router.navigate(['../']);
       this.notesService.updateFilteredNotes();
     });
+  }
+
+  downloadAttachment(attachmentId: number) {
+    console.log("AttachmentId: " + attachmentId);
+    this.notesService.downloadAttachment(attachmentId).subscribe(
+      (response: Blob) => {
+        const fileURL = window.URL.createObjectURL(response);
+        saveAs(fileURL, `attachment-${attachmentId}.pdf`);
+      },
+      (error) => {
+        console.error('Error downloading attachment:', error);
+      }
+    );
   }
 }
