@@ -2,12 +2,13 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category, Note } from './note/note.model';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class NotesService {
   private http = inject(HttpClient);
+  private authService = inject(AuthService);
   private notesUrl = 'http://localhost:8080/';
-
   notes = signal<Note[]>([]);
   categories = signal<Category[]>([]);
   selectedNote = signal<Note | undefined>(undefined);
@@ -16,7 +17,7 @@ export class NotesService {
   filteredNotes = signal<Note[]>([]);
 
   fetchNotes() {
-    this.http.get<any[]>(this.notesUrl + 'notes/user/'+ localStorage.getItem("username")).subscribe((data) => {
+    this.http.get<any[]>(this.notesUrl + 'notes/user/id/'+ this.authService.getUserId()).subscribe((data) => {
       this.notes.set(data);
       this.extractCategories(data);
       this.updateFilteredNotes();
@@ -90,5 +91,23 @@ export class NotesService {
     } else {
       this.headerTitle.set('All notes');
     }
+  }
+
+  addNoteWithAttachments(formData: FormData) {
+    return this.http.post<Note>(`${this.notesUrl}notes`, formData).pipe(
+      tap((newNote) => {
+        // Already routed
+      }),
+      catchError((error) => {
+        console.error('Failed to create note:', error);
+        return throwError(() => new Error('Failed to create note'));
+      })
+    );
+  }
+
+  downloadAttachment(attachmentId: number): Observable<Blob> {
+    return this.http.get(`${this.notesUrl}attachments/${attachmentId}`, {
+      responseType: 'blob',
+    });
   }
 }

@@ -1,0 +1,191 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.main {
+    padding: 2rem;
+    background-color: lightgrey;
+    border-radius: 10px;
+    height: 43rem;
+    flex: 0 0 90%;
+    color: rgb(43, 43, 43);
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.content{
+    max-height: 50%;
+    overflow-y: auto; 
+    padding-right: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:  1px solid rgb(184, 184, 184);
+    padding-bottom: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.save,
+.cancel{
+    cursor:pointer;
+    transition-duration: 0.3s;
+}
+
+.save:hover,
+.cancel:hover{
+    color:purple;
+}
+
+.title span{
+    padding: 1rem;
+    padding-top: 1rem;
+}
+
+.info{
+    border-top:  1px solid rgb(184, 184, 184);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.info span{
+    border-radius: 10px;
+    height: 2.2rem;
+    padding: 7px;
+    padding-left: 8px;
+    padding-right: 1rem;
+    transition-duration: 0.3s;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.categories{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1.3rem;
+    border-bottom: 1px solid rgb(184, 184, 184);
+}
+
+.categories input[type=text]{
+    margin-left: 3rem;
+    background-color: lightgrey;
+    border: 1px solid rgb(184, 184, 184);
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.categories input:focus{
+    border: 1px solid rgb(184, 184, 184);
+    outline: none;
+}
+
+.categories span{
+    color: purple;
+}
+
+.categories span:hover{
+    cursor:default;
+}
+
+.attachments{
+    display:flex;
+    align-items: center;
+}
+
+.attachments input[type=file]::file-selector-button{
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 2rem;
+    background-color: rgb(207, 207, 207);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition-duration: 0.3s;
+}
+
+.attachments input[type=file]::file-selector-button:hover{
+    color: white;
+    background-color: purple;
+    cursor: pointer;
+}
+
+.attachments span{
+    color: purple
+}
+
+.info button{
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    cursor: pointer;
+    transition-duration: 0.2s;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.info button:hover{
+    background-color: purple;
+    color: white;
+}
+
+.deleteButton{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+h1{
+    color:purple;
+    margin: 0;
+}
+
+.content::-webkit-scrollbar,
+.editContent::-webkit-scrollbar {
+    width: 8px;
+}
+  
+.content::-webkit-scrollbar-thumb,
+.editContent::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.178);
+    border-radius: 10px;
+}
+  
+.content::-webkit-scrollbar-track,
+.editContent::-webkit-scrollbar-track {
+    background: #c2c2c2;
+}
+
+.editTitle{
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(209, 209, 209);
+    color:purple;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2rem;
+    width: 70%;
+}
+
+.editTitle:focus,.editContent:focus{
+    border: 0;
+    outline: none;
+}
+
+.editContent{
+    margin-top: .8rem;
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(209, 209, 209);
+    width:100%;
+    resize:none;
+    height: 15rem;
+    font-size: 1rem;
+}

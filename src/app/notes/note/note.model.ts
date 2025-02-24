@@ -9,10 +9,10 @@ export interface Note{
 }
 
 export interface Attachment{
-    "id": number,
+    "id"?: number,
     "fileName": string,
     "fileType": string,
-    "downloadUrl": string
+    "downloadUrl"?: string
 }
 
 export interface Category{

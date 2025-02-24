@@ -1,1 +1,42 @@
-<p>note-new works!</p>
+<app-header/>
+<div class="container">
+    <div class="main">
+        <div class="title">
+            <input class="editTitle" type="text" [(ngModel)]="title" placeholder="Enter note title" />
+            <div>
+                <span class="save" (click)="saveNote()">Save</span>
+                <span class="cancel" (click)="cancel()">Cancel</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <textarea class="editContent" [(ngModel)]="content" placeholder="Enter note content"></textarea>
+        </div>
+        
+        <div class="info">
+            <h4>Categories:</h4>
+            <div class="categories">
+                @for (category of categories(); track category) {
+                    <div class="deleteButton">
+                        <span>{{ category.name }}</span>
+                        <button (click)="removeCategory(category)">Remove</button>
+                    </div>
+                }
+                <input type="text" #newCategory placeholder="New category" />
+                <button (click)="addCategory(newCategory.value)">Add Category</button>
+            </div>
+            
+            <h4>Attachments:</h4>
+            <div class="attachments">
+                @for (file of attachments(); track file) {
+                    <div class="deleteButton">
+                        <span>{{ file.fileName }}</span>
+                        <button (click)="removeAttachment(file)">Remove</button>
+                    </div>
+                }
+                <input type="file" (change)="onFileSelected($event)" multiple />
+            </div>
+        </div>
+    </div>
+</div>
+    

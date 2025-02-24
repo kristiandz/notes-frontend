@@ -36,6 +36,13 @@
                     <button (click)="removeCategory(i)">Remove</button>
                 </div>
             }
+            <!-- <select [(ngModel)]="selectedCategoryId">
+                <option *ngFor="let category of availableCategories(); track category.id" [value]="category.id">
+                  {{ category.name }}
+                </option>
+              </select>
+              <button (click)="addSelectedCategory()">Add Selected Category</button> -->
+
           <input type="text" #newCategory placeholder="New category" />
           <button (click)="addCategory(newCategory.value)">Add Category</button>
         }
@@ -44,7 +51,7 @@
         <h4>Attachments:</h4>
         @if (!isEditing()) {
           @for (attachment of note.attachments; track attachment.id) {
-            <span>{{ attachment.fileName }}</span>
+            <span (click)="downloadAttachment(attachment.id!)">{{ attachment.fileName }}</span>
           }
         } @else {
             @for (control of attachmentsArray().controls; track $index) {
