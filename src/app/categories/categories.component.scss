@@ -1,0 +1,45 @@
+.container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 2rem;
+    padding-top: 4rem;
+}
+
+.category{
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 10px;
+    margin: 1rem;
+    background-color: rgb(173, 173, 173);
+    transition-duration: 0.3s;
+}
+
+.category:hover{
+    background-color: rgb(197, 197, 197);
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.category p{
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    padding-left: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.category button{
+    margin-left: 1rem;
+    padding: 5px;
+    margin-bottom: 1rem;
+    background-color: rgb(143, 143, 143);
+    color: rgb(54, 54, 54);
+    border-radius: 5px;
+    border: 0;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition-duration: 0.3s;
+}
+
+.category button:hover{
+    color:white;
+    background-color: purple;
+    cursor: pointer;
+}

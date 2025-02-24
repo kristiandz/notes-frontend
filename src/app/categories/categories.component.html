@@ -1,4 +1,13 @@
 <app-header />
-<div>
-    <h1>Categories component works</h1>
+<div class="container">
+    @if (categories().length > 0) {
+          @for (category of categories(); track category.id) {
+            <div class="category">
+                <p>{{ category.name }}</p>
+                <button (click)="removeCategory(category.id!)">Delete</button>
+            </div>
+          }
+      } @else {
+        <p>No categories available.</p>
+      }
 </div>
