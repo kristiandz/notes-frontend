@@ -19,9 +19,7 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.username(), this.password()).subscribe({
-      next: (response) => {
-        this.authService.setToken(response);
-        this.authService.setAuthorized();
+      next: () => {
         this.router.navigate(['/notes']);
       },
       error: (error: HttpErrorResponse) => {
@@ -34,11 +32,7 @@ export class LoginComponent {
 
   register() {
     this.authService.register(this.username(), this.password()).subscribe({
-      next: (response) => {
-        const res =
-          typeof response === 'string' ? JSON.parse(response) : response;
-        this.authService.setToken(res.token);
-        this.authService.setAuthorized();
+      next: () => {
         this.router.navigate(['/notes']);
       },
       error: (error: HttpErrorResponse) => {
